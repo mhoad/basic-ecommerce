@@ -1,0 +1,76 @@
+body {
+  /* Margin bottom by footer height and top by navbar height */
+  margin-top: 60px;
+  margin-bottom: 70px;
+}
+
+.footer {
+  background-color: gray;
+  color: white;
+  padding: 10px;
+}
+
+#hero {
+  background-image: url(../img/lady-in-field.jpg);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 400px;
+}
+
+/*CORNER RIBBON CODE
+Adapted from: https://gist.github.com/shahariaazam/863a4a0c5c9a65a7e6e8 */
+
+.folded h2 {
+    background: #08b;
+    background-image: radial-gradient(transparent 30%, rgba(0, 0, 0, 0.2));
+    border: 0 solid rgba(0,0,0,0.2);
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    position: relative;
+    text-shadow: -1px -1px 1px rgba(0,0,0,0.2);
+}
+ 
+.folded:before, div.folded:after {
+    bottom: 26px;
+    content: "";
+    height: 28px;
+    position: absolute;
+    width: 48%;
+    z-index: -1;
+}
+.folded:before {
+    left: 2%;
+    transform: rotate(-3deg);
+}
+.folded:after {
+    right: 2%;
+    transform: rotate(3deg);
+}
+.folded h2 {
+    border-width: 1px 1px 2px;
+    margin: 0;
+    padding: 4px 40px;
+    position: absolute;
+    right: 2px;
+    margin-top: -16px;
+}
+.folded h2:after {
+    border-width: 7px;
+    border-style: solid;
+    border-color: #134 transparent transparent #134;
+    bottom: -15px;
+    content: "";
+    position: absolute;
+    right: -1px;
+}
+.sold-out h2 {
+  background-color: red;
+}
+
+footer a {
+  color: white;
+  text-decoration: underline;
+}

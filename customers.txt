@@ -1,0 +1,4 @@
+"FirstName"   "LastName"   "Email"   "PasswordRAW"   "crypt(password)"   "Phone"   "Discount-PS1"   "Discount-PS2"   "Discount-PS3"
+"Alice"   "Liddell"   "alice@wonderland.com"   "whi73r4bbit"   "$1$7PggNm.5$Y0cLU4ADlrJcyefBjVpW11"   "+619 8765 4321"   3   4   9
+"Bob"   "Builder"   "bob@thebuilder.com"   "canwebuildit"   "$1$4Sreknxy$HJfmhPNiwc3kVwCGZuY/h."   "+44 161 941 2626"   1   2   3
+"Carol"   "Singer"   "carol@singers.com"   "harktheherald"   "$1$QMMwJqrQ$G1I3w3CjsPgJ.LPv9VQfr1"   "(08) 1234 5678"   6   5   4
