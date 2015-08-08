@@ -1,3 +1,17 @@
+<?php require 'functionality/product_listings.php'; ?>
+<?php 
+  // First we want to check that the product_id parameter actually exists and then we want to ensure that it is actualy an integer
+  if (isset($_GET['product_id']) && null !== ($product_id = filter_input(INPUT_GET, 'product_id', FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE)) ) {
+    //Now we know that it is an integer we want to make sure it actualy matches up with a valid product
+    if (!array_key_exists($product_id, $products)) {
+      # Not a valid product ID so send them back to the product page
+      header('Location: products.php');
+    }
+  } else {
+    // Not a valid product ID so send them back to the product page
+    header('Location: products.php');
+  }
+?>
 <?php require 'partials/head.php'; ?>
   <body>
     <div class="container-fluid">
@@ -6,41 +20,31 @@
       <ol class="breadcrumb">
         <li><a href="index.php">Home</a></li>
         <li><a href="products.php">Products</a></li>
-        <li class="active">The Smooth Operator</li>
+
+        <li class="active"><?php echo $products[$product_id]['title']; ?></li>
       </ol>
       <div class="page-header">
         <h1>
-          <span itemprop="name">The Smooth Operator </span>
+          <span itemprop="name"><?php echo $products[$product_id]['title']; ?></span>
+          
           <span itemscope itemtype="http://schema.org/Offer">
             <meta itemprop="availability" content="http://schema.org/InStock">
             <small>
               <span itemprop="priceCurrency" content="AUD">$</span>
-              <span itemprop="price" content="84.99">84.99</span>
+              <span itemprop="price" content="<?php echo $products[$product_id]['price']; ?>"><?php echo $products[$product_id]['price']; ?></span>
             </small>
           </span>
         </h1>
       </div>
       <div class="row" >
         <div class="col-sm-4">
-          <!-- Original image sourced from https://stocksnap.io/photo/DC246EC89C -->
-          <img src="img/smooth-operator-product.jpg" class="img-responsive" alt="The Smooth Operator Shoe" itemprop="image">
+          <img src="<?php echo $products[$product_id]['image']; ?>" class="img-responsive" alt="<?php echo $products[$product_id]['title']; ?> Shoe" itemprop="image">
         </div>
         <div class="col-sm-8" itemprop="description">
-          <p class="lead"><em>Great for Work... Even Better for After Work Drinks</em></p>
+          <p class="lead"><em><?php echo $products[$product_id]['tagline']; ?></em></p>
           <h5>Product Description</h5>
           <p>
-            The perfect addition to your work wardrobe, that you'll also be happy to wear on the weekend. 
-            Dress shoes can be hard to buy. They're expensive. And you don't really know if you like them 
-            until you've gotten your first blister and decide that you hate them. You will not hate these shoes. 
-            The cushioning inside makes it feel like you're walking on clouds. The high ankle means that 
-            there is no rubbing, ever. You will not get a blister with these shoes. 
-          </p>
-          <p>
-            Also, they've got style. They're classic with a little something. They're not your father's boring shoes, 
-            but they're not so eccentric that your boss rolls his eyes. We call them "hipster-lite". Your girlfriend 
-            loves to show them off and brag to her friends about your sense of style and your mom thinks you just 
-            look so handsome. Hey, this might be the first thing they've ever agreed on. These shoes are definitely 
-            a win-win.
+            <?php echo $products[$product_id]['description']; ?>
           </p>
         </div>
         <div class="row">
@@ -51,15 +55,15 @@
               </div>
               <div class="panel-body">
                 <p><strong>Status:</strong> In stock</p>
-                <p></p>
+                <p><strong>Category:</strong> <?php echo $products[$product_id]['category'];?></p>
                 <form method="post" action="http://coreteaching01.csit.rmit.edu.au/~e54061/wp/formprocessor.php">
                   <div class="form-group">
                     <label class="sr-only">Amount (in dollars)</label>
                     <div class="input-group">
                       <label for="order-qty">How many pairs do you want?</label>
                       <input type="number" class="form-control" id="order-qty" name="qty" value="1" step="1" min="1" required>
-                      <input type="hidden" value="84.99" name="unit-price" id="unit-price">
-                      <input type="hidden" value="p12345" name="productID">
+                      <input type="hidden" value="<?php echo $products[$product_id]['price']; ?>" name="unit-price" id="unit-price">
+                      <input type="hidden" value="<?php echo $product_id; ?>" name="productID">
                       <p>
                         <a class="btn btn-default" id="add-qty">+</a>
                       <a class="btn btn-default" id="minus-qty">-</a>

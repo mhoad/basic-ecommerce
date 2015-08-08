@@ -12,32 +12,30 @@
         </div>
         <div class="row">
           <div class="col-sm-4 col-md-4" itemscope itemtype="http://schema.org/Product">
+            <span itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+              <meta itemprop="priceCurrency" content="AUD">
+              <meta itemprop="price" content="44.99">
+              <meta itemprop="availability" content="http://schema.org/InStock">
+            </span>
             <div class="thumbnail">
-              
-                <div class="folded sold-out" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                  <h2 itemprop="availability" itemscope itemtype="http://schema.org/SoldOut">Sold Out</h2>
-                  <meta itemprop="priceCurrency" content="AUD">
-                  <meta itemprop="price" content="72.99">
-                </div>
               <!-- Original image sourced from https://stocksnap.io/photo/3K5S13RPLL -->
               <img src="img/navy-all-day.jpg" alt="Navy All Day Shoes" itemprop="image">
               <div class="caption">
                 <h3 itemprop="name">The Navy All-Day</h3>
                 <p itemprop="description">A thick, cushion-y bottom and a soft, flexible top. The Navy All-Day is a shoe that 
                 you can live in. This shoe will be your companion through thick and thin.</p>
-                <p><a href="#" class="btn btn-primary disabled" role="button">View Product</a></p>
+                <p><a href="product.php?product_id=3" class="btn btn-primary" role="button">View Product</a></p>
               </div>
             </div>
           </div>
 
           <div class="col-sm-4 col-md-4" itemscope itemtype="http://schema.org/Product">
+            <span itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+              <meta itemprop="priceCurrency" content="AUD">
+              <meta itemprop="price" content="64.99">
+              <meta itemprop="availability" content="http://schema.org/InStock">
+            </span>
             <div class="thumbnail">
-
-              <div class="folded sold-out" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-                  <h2 itemprop="availability" itemscope itemtype="http://schema.org/SoldOut">Sold Out</h2>
-                  <meta itemprop="priceCurrency" content="AUD">
-                  <meta itemprop="price" content="64.99">
-                </div>
               <!-- Original image sourced from https://stocksnap.io/photo/MFQ5MVE2HL -->
               <img src="img/the-dakota.jpg" alt="The Dakota Shoe" itemprop="image">
               <div class="caption">
@@ -45,13 +43,12 @@
                 <p itemprop="description">From movie night with the girls to a meeting with your boss, this shoe does it all. 
                 The Dakota can easily be dressed up or down, and has enough support to wear all day. 
                 Hello, new favourite!</p>
-                <p><a href="#" class="btn btn-primary disabled" role="button">View Product</a></p>
+                <p><a href="product.php?product_id=2" class="btn btn-primary" role="button">View Product</a></p>
               </div>
             </div>
           </div>
 
           <div class="col-sm-4 col-md-4" itemscope itemtype="http://schema.org/Product">
-
             <span itemprop="offers" itemscope itemtype="http://schema.org/Offer">
               <meta itemprop="priceCurrency" content="AUD">
               <meta itemprop="price" content="84.99">
@@ -64,7 +61,7 @@
                 <h3 itemprop="name">The Smooth Operator</h3>
                 <p itemprop="description">Work shoes shouldn't be stiff! The Smooth Operator has built-in cushioning, supple leather, 
                 and enough freedom to wear even after you've left the office.</p>
-                <p><a href="product.php" class="btn btn-primary" role="button">View Product</a></p>
+                <p><a href="product.php?product_id=1" class="btn btn-primary" role="button">View Product</a></p>
               </div>
             </div>
           </div>
