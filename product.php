@@ -1,4 +1,7 @@
-<?php require 'functionality/product_listings.php'; ?>
+<?php 
+  require 'functionality/product_listings.php'; 
+  require 'functionality/functions.php';
+?>
 <?php 
   // First we want to check that the product_id parameter actually exists and then we want to ensure that it is actualy an integer
   if (isset($_GET['product_id']) && null !== ($product_id = filter_input(INPUT_GET, 'product_id', FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE)) ) {
@@ -31,7 +34,17 @@
             <meta itemprop="availability" content="http://schema.org/InStock">
             <small>
               <span itemprop="priceCurrency" content="AUD">$</span>
-              <span itemprop="price" content="<?php echo $products[$product_id]['price']; ?>"><?php echo $products[$product_id]['price']; ?></span>
+              <span itemprop="price" content="<?php echo calculate_price($products[$product_id]['price'],$products[$product_id]['category']); ?>">
+              <?php 
+              if (is_eligible_for_discount($products[$product_id]['category'])) {
+                // If they are eligable for a discount make it obvious to the user when displaying the price
+                echo "<del>" . $products[$product_id]['price'] . "</del> " . calculate_price($products[$product_id]['price'],$products[$product_id]['category']);
+              } else {
+                // If they aren't eligable for a discount just show them the regular price
+                echo calculate_price($products[$product_id]['price'],$products[$product_id]['category']);
+              }  
+              ?>
+              </span>
             </small>
           </span>
         </h1>
@@ -55,6 +68,11 @@
               </div>
               <div class="panel-body">
                 <p><strong>Status:</strong> In stock</p>
+                <?php 
+                  if (is_eligible_for_discount($products[$product_id]['category'])) {
+                    echo "<p><strong>Customer Loyalty Discount:</strong> " . calculate_discount($products[$product_id]['category']) . "%</p>";
+                  }
+                ?>
                 <p><strong>Category:</strong> <?php echo $products[$product_id]['category'];?></p>
                 <form method="post" action="http://coreteaching01.csit.rmit.edu.au/~e54061/wp/formprocessor.php">
                   <div class="form-group">
@@ -62,7 +80,7 @@
                     <div class="input-group">
                       <label for="order-qty">How many pairs do you want?</label>
                       <input type="number" class="form-control" id="order-qty" name="qty" value="1" step="1" min="1" required>
-                      <input type="hidden" value="<?php echo $products[$product_id]['price']; ?>" name="unit-price" id="unit-price">
+                      <input type="hidden" value="<?php echo calculate_price($products[$product_id]['price'],$products[$product_id]['category']); ?>" name="unit-price" id="unit-price">
                       <input type="hidden" value="<?php echo $product_id; ?>" name="productID">
                       <p>
                         <a class="btn btn-default" id="add-qty">+</a>
