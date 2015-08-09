@@ -29,6 +29,7 @@
       // Finally, lets also set a message and message-type session variable so we can provide feedback to the user
       $_SESSION["message_type"] = "alert-success";
       $_SESSION["message"] = "You are now successfully logged in. Please enjoy your loyalty discounts!";
+      // Once they are logged in we should send them back to whatever page they came from to ensure a smooth experience
       header('Location: '. $_SERVER['HTTP_REFERER']);
       die();
     }	

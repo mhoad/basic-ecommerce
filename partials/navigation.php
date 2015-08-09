@@ -6,8 +6,8 @@
           <img src="img/logo-foot-freedom.gif" alt="Foot Freedom Logo" height="30">
         </a>
       </div>
-      <a href="#">
-          <button type="button" class="btn btn-primary navbar-btn" id="logout-button"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> View Cart</button>
+      <a href="cart.php" class="btn btn-primary navbar-btn" id="logout-button">
+        <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> View Cart
       </a>
       <div class="navbar-right">
         <?php if (isset($_SESSION["first_name"])): ?>

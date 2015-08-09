@@ -1,6 +1,13 @@
 <?php 
   function calculate_discount($product_category)
   {
+    // There are 3 product categories that are eligable for a discount including:
+    // Formal shoes, Boots and Casual shoes. So we will just pass in the product
+    // category and then use a switch statement to see if it is an eligable category
+    // if it is then we will simply check for the existence of a session variable that 
+    // is set upon login and contains the personal discounts for that customer. If there
+    // is no appropriate session variable for the user than the discount will simply be 0
+    
     switch ($product_category) {
       case 'Formal':
         if (isset($_SESSION["discount_1"])) {
@@ -51,4 +58,72 @@
       return $original_price;
     }
   }
+    function calculate_order_total() {
+      $total_price = 0;
+      foreach($_SESSION['cart'] as $pid => $qty){
+        $unit_price = calculate_product_subtotal($pid);
+        $total_price = $total_price + ($unit_price * $pid);
+      }
+      return $total_price;
+    }
+
+    function update_cart($product_id, $qty)
+    {
+      if (isset($_SESSION['cart'][$product_id])) {
+        // We already have a quantity associated with this product
+        // therefore we need to update it. Let's start by grabbing 
+        // the existing value (i.e. the quanity) associated with it.
+        $existing_qty = $_SESSION['cart'][$product_id];
+        // Now we just update it by adding the new quantity
+        $_SESSION['cart'][$product_id] = $existing_qty + $qty;
+      } else {
+        // At this point we can assume that we don't have this item in 
+        // the cart yet so we just use the quantity passed to the function.
+        echo "We are in the no existing quantity branch";
+        $_SESSION['cart'][$product_id] = $qty;
+      }
+    }
+
+    function calculate_product_subtotal($product_id)
+    {
+      // Grab the original price and the product category
+      require 'product_listings.php';
+      $original_price =  $products[$product_id]['price'];
+      $category =  $products[$product_id]['category'];
+      return calculate_price($original_price, $category);
+    }
+
+    function get_product_name($product_id){
+      require 'product_listings.php';
+      return $products[$product_id]['title'];
+    }
+
+    function display_cart_details($items_in_basket)
+    {
+      # TODO: WRITE THIS SECTION
+      echo "<table class='table table-striped'>";
+      echo "<tr>";
+      echo "<th>Item Name</th>";
+      echo "<th>Quantity</th>";
+      echo "<th>Unit Price</th>";
+      echo "<th>Product Subtotal</th>";
+      echo "</tr>";
+      echo "<tbody>";
+      
+      foreach($_SESSION['cart'] as $pid => $qty)
+      {
+        echo "<tr>";
+        echo "<td>" . get_product_name($pid) . "</td>";
+        echo "<td>" . $qty . "</td>"; 
+        echo "<td> $" . calculate_product_subtotal($pid) . "</td>";
+        echo "<td> $" . calculate_product_subtotal($pid) * $qty . "</td>"; 
+        echo "</tr>";
+      }
+      echo "<tr class='info'>";
+      echo "<td></td><td></td><td></td>";
+      echo "<td><strong>Total Price:</strong> $" . calculate_order_total() . "</td>";
+      echo "</tr>";
+      echo "</tbody>";
+      echo "</table>";
+    }
 ?>

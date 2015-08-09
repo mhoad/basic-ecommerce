@@ -74,7 +74,8 @@
                   }
                 ?>
                 <p><strong>Category:</strong> <?php echo $products[$product_id]['category'];?></p>
-                <form method="post" action="http://coreteaching01.csit.rmit.edu.au/~e54061/wp/formprocessor.php">
+                <!-- <form method="post" action="http://coreteaching01.csit.rmit.edu.au/~e54061/wp/formprocessor.php"> -->
+                <form method="post" action="cart.php">
                   <div class="form-group">
                     <label class="sr-only">Amount (in dollars)</label>
                     <div class="input-group">
