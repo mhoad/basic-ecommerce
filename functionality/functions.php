@@ -125,5 +125,6 @@
       echo "</tr>";
       echo "</tbody>";
       echo "</table>";
+      echo "<a href='checkout.php' class='btn btn-success'>Checkout</a>";
     }
 ?>
