@@ -74,7 +74,6 @@
                   }
                 ?>
                 <p><strong>Category:</strong> <?php echo $products[$product_id]['category'];?></p>
-                <!-- <form method="post" action="http://coreteaching01.csit.rmit.edu.au/~e54061/wp/formprocessor.php"> -->
                 <form method="post" action="cart.php">
                   <div class="form-group">
                     <label class="sr-only">Amount (in dollars)</label>
@@ -85,7 +84,7 @@
                       <input type="hidden" value="<?php echo $product_id; ?>" name="productID">
                       <p>
                         <a class="btn btn-default" id="add-qty">+</a>
-                      <a class="btn btn-default" id="minus-qty">-</a>
+                        <a class="btn btn-default" id="minus-qty">-</a>
                       </p>
                       
                     </div>

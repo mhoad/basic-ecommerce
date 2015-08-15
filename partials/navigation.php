@@ -37,6 +37,7 @@
   <div class="alert <?php echo $_SESSION["message_type"] ?>" role="alert">
   <?php 
     echo $_SESSION["message"];
+    // Clear the message variable to ensure we don't keep displaying the same message
     $_SESSION["message"] = NULL;
    ?>
   </div>
