@@ -1,3 +1,4 @@
 FirstName,LastName,Email,PhoneNumber,Address,"Order Date","Order Amount"
 Bob,Builder,bob@thebuilder.com,"+44 161 941 2626","123 fake st",21-08-2015,84.14
 Carol,Singer,carol@singers.com,"(08) 1234 5678","225 fake st",21-08-2015,123.48
+Bob,Builder,bob@thebuilder.com,"+44 161 941 2626","252 West 23rd St",21-08-2015,1042.63

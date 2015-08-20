@@ -62,7 +62,7 @@
       $total_price = 0;
       foreach($_SESSION['cart'] as $pid => $qty){
         $unit_price = calculate_product_subtotal($pid);
-        $total_price = $total_price + ($unit_price * $pid);
+        $total_price = $total_price + ($unit_price * $qty);
       }
       return $total_price;
     }
@@ -79,7 +79,6 @@
       } else {
         // At this point we can assume that we don't have this item in 
         // the cart yet so we just use the quantity passed to the function.
-        echo "We are in the no existing quantity branch";
         $_SESSION['cart'][$product_id] = $qty;
       }
     }

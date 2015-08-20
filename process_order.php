@@ -26,7 +26,7 @@
     // Now we can perform additional validation for select fields that require it
     validate_email_address($email_address);
     validate_phone_number($phone_number);
-    //validate_credit_card($credit_card_number);
+    validate_credit_card($credit_card_number);
     validate_credit_card_expiry($credit_card_month, $credit_card_year);
 
   } else {
