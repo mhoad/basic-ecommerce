@@ -3,6 +3,23 @@
   require 'functionality/functions.php';
 ?>
 <body>
+  <script type="text/javascript">
+    function validateCreditCardExpiry() {
+      var cc_month = document.forms["customer-details"]["credit_card_month"].value;
+      var cc_year = document.forms["customer-details"]["credit_card_year"].value;
+
+      var current_month = new Date().getMonth()+1;
+      var current_year = new Date().getFullYear();
+      
+      var user_credit_card_date = new Date(cc_year, cc_month);
+      var current_date = new Date(current_year, current_month);
+
+      if (user_credit_card_date < current_date) {
+        alert("Please ensure your credit card is up to date");
+        return false;  
+      };
+    }
+  </script>
     <div class="container-fluid">
       <?php require 'partials/navigation.php'; ?>
       <main>
@@ -20,7 +37,7 @@
         <!-- Begin Checkout Form -->
         <div class="row">
           <div class="col-lg-6 col-md-offset-4">
-            <form method="post" action="process_order.php">
+            <form id="customer-details" method="post" onsubmit="return validateCreditCardExpiry()" action="process_order.php">
               <div class="input-group input-group-lg">
                 <p>
                   <label for="customer_first_name">First Name</label><br>
