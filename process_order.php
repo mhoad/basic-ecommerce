@@ -1,5 +1,6 @@
 <?php 
   session_start();
+  require 'functionality/functions.php';
   require 'functionality/checkout_functions.php';
   if (count($_POST) > 1) {
     //Get all the relevant values
@@ -43,8 +44,12 @@
     header('Location: '. $_SERVER['HTTP_REFERER']);
 
   } else {
-    // All user input validated correctly 
-    $order_data = array($first_name, $last_name, $email_address, $phone_number, $address);
+    // All user input validated correctly
+    // Let's grab all of the rest of the info that we will need for the orders.txt file.
+    $todays_date = date("d-m-Y");
+    $order_total = calculate_order_total();
+
+    $order_data = array($first_name, $last_name, $email_address, $phone_number, $address, $todays_date, $order_total);
     // First check if the customers.csv file already exists
     if (file_exists('orders.txt')) {
       // The file already exists so append to it to ensure we don't lose existing data
@@ -55,7 +60,7 @@
       fclose($orders_file);
     } else {
       // This is a brand new file so we need to declare some headings first
-      $orders_csv_headings = array("FirstName", "LastName", "Email", "PhoneNumber", "Address");
+      $orders_csv_headings = array("FirstName", "LastName", "Email", "PhoneNumber", "Address", "Order Date", "Order Amount");
       
       $orders_file = fopen('orders.txt', 'w');
       //Put the headings before any data
@@ -71,9 +76,6 @@
 <?php 
   // Now we have done all of the hard work we can now show the thank you message
   require 'partials/head.php';
-
-  //Empty the cart while we are here
-  $_SESSION['cart'] = NULL;
 ?>
   <body>
     <div class="container-fluid">
@@ -100,5 +102,9 @@
         <?php require 'partials/footer.php'; ?>
       </div>
       <?php require 'partials/javascript.php'; ?>
+      <?php 
+        //Empty the cart while we are here
+        $_SESSION['cart'] = NULL; 
+      ?>
   </body>
 </html>
