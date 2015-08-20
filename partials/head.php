@@ -1,5 +1,8 @@
-<?php 
-  session_start();
+<?php
+// Start the session if we haven't alreadys
+  if(session_id() == '') {
+    session_start();
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">

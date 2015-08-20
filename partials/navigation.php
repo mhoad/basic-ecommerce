@@ -11,7 +11,7 @@
       </a>
       <div class="navbar-right">
         <?php if (isset($_SESSION["first_name"])): ?>
-          <p class="navbar-text">Welcome back <?php echo $_SESSION["first_name"]; ?> </p>
+          <p class="navbar-text"><b>Currently Signed In As:</b> <?php echo $_SESSION["first_name"]; ?> </p>
           <a href="functionality/logout.php">
             <button type="button" class="btn btn-danger navbar-btn">Logout</button>
           </a>

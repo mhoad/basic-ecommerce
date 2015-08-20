@@ -41,12 +41,13 @@
   $_SESSION["messages"] = array("Unfortunately, the login details you provided do not match any accounts. Please try again.");
   header('Location: '. $_SERVER['HTTP_REFERER']);
 
-  // Take the password hash we already have and see if it is a match for the password entered
+  // Take the password hash we already have and see if it is a match for the password entered.
+  // PHP in all its weird goodness returns FALSE when the two strings match. Awesome!
   function authenticate_user($password_hash, $provided_password) {
-    if (hash_equals($password_hash, crypt($provided_password, $password_hash))) {
-      return TRUE;
-    } else {
+    if (strcmp($password_hash, crypt($provided_password, $password_hash))) {
       return FALSE;
+    } else {
+      return TRUE;
     }
   }
 

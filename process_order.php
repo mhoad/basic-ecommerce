@@ -31,7 +31,7 @@
   } else {
     // If they access this page directly then set and error and send them back to where they came from
     $_SESSION["message_type"] = "alert-danger";
-    $_SESSION["messages"] = array("You need to have complete the checkout process first");
+    $_SESSION["messages"] = array("You need to have completed the checkout process first");
     header('Location: '. $_SERVER['HTTP_REFERER']);
   }
 
@@ -45,7 +45,6 @@
   } else {
     // All user input validated correctly 
     $order_data = array($first_name, $last_name, $email_address, $phone_number, $address);
-    echo "Everything worked correctly";
     // First check if the customers.csv file already exists
     if (file_exists('orders.txt')) {
       // The file already exists so append to it to ensure we don't lose existing data
@@ -57,6 +56,7 @@
     } else {
       // This is a brand new file so we need to declare some headings first
       $orders_csv_headings = array("FirstName", "LastName", "Email", "PhoneNumber", "Address");
+      
       $orders_file = fopen('orders.txt', 'w');
       //Put the headings before any data
       fputcsv($orders_file, $orders_csv_headings);
@@ -67,3 +67,29 @@
     }
   }
 ?>
+
+<?php 
+  // Now we have done all of the hard work we can now show the thank you message
+  require 'partials/head.php';
+
+  //Empty the cart while we are here
+  $_SESSION['cart'] = NULL;
+?>
+<body>
+<div class="container-fluid">
+  <?php require 'partials/navigation.php'; ?>
+  <main>  
+    <div class="container">
+    <div class="row">
+      <p class="lead">Congratulations! You're Order Is On It's Way To You Directly!</p>
+      <div class="col-md-6">
+        <h1><span class="glyphicon glyphicon-leaf" aria-hidden="true"></span> That is All! Thank You</h1>
+        <p>The dog days of blisters are over. There is no need to ever stand at a party, or in a business meeting, or in the middle of a long run, and curse the shoes on your feet. If they aren't comfortable, and don't feel great, ALL THE TIME, get rid of them!</p>
+      </div>
+    </div>
+  </main>
+    <?php require 'partials/footer.php'; ?>
+    </div>
+    <?php require 'partials/javascript.php'; ?>
+  </body>
+</html>
