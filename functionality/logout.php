@@ -10,5 +10,5 @@
   session_start();
   $_SESSION["message_type"] = "alert-success";
   $_SESSION["messages"] = array("You have successfully signed out!");
-  header('Location: '. $_SERVER['HTTP_REFERER']);
+  header('Location: ../index.php');
 ?>

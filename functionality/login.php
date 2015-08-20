@@ -63,8 +63,9 @@
   function load_customer_data($filename='')
   {
       ini_set('auto_detect_line_endings', TRUE);
-      if(!file_exists($filename) || !is_readable($filename))
-          return FALSE;
+      if(!file_exists($filename) || !is_readable($filename)) {
+        return FALSE;
+      }
 
       $header = NULL;
       $data = array();

@@ -51,27 +51,43 @@
             <div class="panel-heading">Orders Placed via the Website</div>
               <!-- Table -->
               <table class="table">
-              <thead>
-                <tr>
-                  <td>First Name</td>
-                  <td>Last Name</td>
-                  <td>Email</td>
-                  <td>Phone Number</td>
-                  <td>Address</td>
-                  <td>Order Date</td>
-                  <td>Order Amount</td>
-                </tr>
-              </thead>
               <?php 
                 $orders_file = open_customer_orders();
               ?>
               <tbody>
-                <?php                 
+                <?php
                   if ($orders_file === NULL) {
                     echo "<td>Sorry. There are currently no orders to display</td>";
                   } else {
-                    print_r(fgetcsv($orders_file));
-                    fclose($orders_file);
+
+                    $header = NULL;
+                    if (($handle = fopen("orders.txt", 'r')) !== FALSE)
+                    {
+                        while (($row = fgetcsv($handle, 1000, ",")) !== FALSE)
+                        {
+                            if(!$header)
+                                $header = $row;
+                            else
+                                // $data[] = array_combine($header, $row);
+                              echo "<tr>";  
+                              foreach ($row as $value) {
+                                echo "<td>" . $value . "</td>";
+                              }
+                              echo "</tr>";
+                        }
+                        fclose($handle);
+                    // $row = 1;
+                    // while (($data = fgetcsv($orders_file, 1000, ",")) !== FALSE) {
+                    //   $num = count($data);
+                    //   $row++;
+                    //   echo "<tr>";
+                    //   for ($c=0; $c < $num; $c++) {
+                    //     echo "<td>" . $data[$c] . "</td>\n";
+                    //   }
+                    //   echo "</tr>";
+                    }
+                    //print_r(fgetcsv($orders_file));
+                    // fclose($orders_file);
                   }               
                 ?>
               </tbody>
