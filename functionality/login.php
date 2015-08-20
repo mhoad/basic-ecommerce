@@ -34,6 +34,14 @@
       die();
     }	
   }
+  // So far we know they aren't a customer but perhaps they are the client / admin
+  if ($_POST['username']=="client@client.com" && $_POST['password']=="ichbindasclient")
+    {  
+      $_SESSION["email"] = $_POST['username'];
+      header("Location: ../admin.php"); /* Redirect browser */
+      exit();
+    }
+
 
   // At this point we have checked the login details provided against all enteries in the customer file and found
   // no matches so we can assume that the login details the user submitted were incorrect.
