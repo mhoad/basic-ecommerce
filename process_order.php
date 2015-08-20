@@ -75,21 +75,30 @@
   //Empty the cart while we are here
   $_SESSION['cart'] = NULL;
 ?>
-<body>
-<div class="container-fluid">
-  <?php require 'partials/navigation.php'; ?>
-  <main>  
-    <div class="container">
-    <div class="row">
-      <p class="lead">Congratulations! You're Order Is On It's Way To You Directly!</p>
-      <div class="col-md-6">
-        <h1><span class="glyphicon glyphicon-leaf" aria-hidden="true"></span> That is All! Thank You</h1>
-        <p>The dog days of blisters are over. There is no need to ever stand at a party, or in a business meeting, or in the middle of a long run, and curse the shoes on your feet. If they aren't comfortable, and don't feel great, ALL THE TIME, get rid of them!</p>
+  <body>
+    <div class="container-fluid">
+      <?php require 'partials/navigation.php'; ?>
+      <main>  
+        <div class="container">
+          <div class="row">
+          &nbsp;
+          </div>
+          <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+              <h1 class="text-center">Congratulations! You're Shoes Are On Their Way</h1>
+              <p class="lead text-center">
+                We are going to have you into your new shoes in no time flat. If you have any questions
+                queries or concerns about anything to do with your order at all then please don't hesitate
+                to get in touch. We hope you love our shoes as much as we do!
+              </p>
+            </div>
+          </div>
+          <div class="row">
+          &nbsp;
+          </div>
+        </main>
+        <?php require 'partials/footer.php'; ?>
       </div>
-    </div>
-  </main>
-    <?php require 'partials/footer.php'; ?>
-    </div>
-    <?php require 'partials/javascript.php'; ?>
+      <?php require 'partials/javascript.php'; ?>
   </body>
 </html>

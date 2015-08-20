@@ -4,9 +4,9 @@
       <?php require 'partials/navigation.php'; ?>
       <main>
         <ol class="breadcrumb">
-        <li><a href="index.php">Home</a></li>
-        <li class="active">Our Privacy Policy</li>
-      </ol>
+          <li><a href="index.php">Home</a></li>
+          <li class="active">Our Privacy Policy</li>
+        </ol>
       <div class="page-header">
         <h1>Our Privacy Policy</h1>
       </div>
@@ -136,12 +136,10 @@
           <iframe src="//www.simpleprivacy.net.au/public/p.php?p=0&c=eJxVkEFSwzAMRa%2BS0QGSphQoyoYNS1YcgBGJaDKxLY%2FlNHQ63B3bzaKsLEv%2FP3%2BZsN3hVfGI8LWoSogKHWGL1wl3neITgjgzOYbuV%2FG5qOLFp6viA8LH%2B1uuHhHY0mRy3b4gWArzMAoNr6fcrnuxZXRA8GE6U3%2FpxUXqY8Ek9xijx6ZZ17XmH7LecPY0m7geoy3shJ7ct%2BQA%2F2MmsJMtZFoIRlmV%2ByXwsNkWd3dvW4R15MCLHyiWXZInH%2BkblI3JjxThMXNj5UmVh0pCpWJuiP0tSp4k%2BXzHyCM%2Ff57YcaAoofQQ9incH6RUdyE%3D" class="simpleprivacy" style="width:40px!important;height:28px!important;border:0;padding:0;vertical-align:top;overflow:hidden"></iframe>
         </div>
       </div>
-        
-        
-      </div>
-      </main>
-      <?php require 'partials/footer.php'; ?>
     </div>
-      <?php require 'partials/javascript.php'; ?>
+  </main>
+  <?php require 'partials/footer.php'; ?>
+  </div>
+  <?php require 'partials/javascript.php'; ?>
   </body>
 </html>
