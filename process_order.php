@@ -1,4 +1,5 @@
 <?php 
+  session_start();
   require 'functionality/checkout_functions.php';
   if (count($_POST) > 1) {
     //Get all the relevant values
@@ -29,15 +30,17 @@
 
   } else {
     // If they access this page directly then set and error and send them back to where they came from
-    $_SESSION["message_type"] = "alert-error";
-    $_SESSION["message"] = "You need to have complete the checkout process first";
+    $_SESSION["message_type"] = "alert-danger";
+    $_SESSION["messages"] = array("You need to have complete the checkout process first");
     header('Location: '. $_SERVER['HTTP_REFERER']);
   }
 
   if (count($errors) > 0) {
     // There were errors in the input we received so we need to get them fixed
-    echo count($errors) . " errors detected <p>";
-    echo var_dump($errors);
+    // Send them back and display the error messages
+    $_SESSION["message_type"] = "alert-danger";
+    $_SESSION["messages"] = $errors;
+    header('Location: '. $_SERVER['HTTP_REFERER']);
 
   } else {
     // All user input validated correctly 

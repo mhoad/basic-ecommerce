@@ -9,6 +9,6 @@
   session_regenerate_id(true);
   session_start();
   $_SESSION["message_type"] = "alert-success";
-  $_SESSION["message"] = "You have successfully signed out!";
+  $_SESSION["messages"] = array("You have successfully signed out!");
   header('Location: '. $_SERVER['HTTP_REFERER']);
 ?>

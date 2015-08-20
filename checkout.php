@@ -41,7 +41,7 @@
               <div class="input-group input-group-lg">
                 <p>
                   <label for="customer_first_name">First Name</label><br>
-                  <input type="text" class="form-control" required <?php (isset($_SESSION["first_name"]) ? print 'value="' . $_SESSION["first_name"] . '"' : print 'placeholder="Joe"'); ?> name="first_name" id="customer_first_name">
+                  <input type="text" class="form-control"  <?php (isset($_SESSION["first_name"]) ? print 'value="' . $_SESSION["first_name"] . '"' : print 'placeholder="Joe"'); ?> name="first_name" id="customer_first_name">
                 </p>
                 <p>
                   <label for="customer_first_name">Last Name</label><br>

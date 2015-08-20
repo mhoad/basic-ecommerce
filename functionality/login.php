@@ -4,7 +4,7 @@
   // First check to ensure that both a username and password were entered
   if (empty($_POST["username"]) || empty($_POST["password"])) {
 	 // If either is missing redirect them to the homepage with an error message
-   $_SESSION["message"] = "You are missing either your username or password. Please try again";
+   $_SESSION["messages"] = array("You are missing either your username or password. Please try again");
    $_SESSION["message_type"] = "alert-warning";
    header('Location: '. $_SERVER['HTTP_REFERER']);
    die();
@@ -28,7 +28,7 @@
 
       // Finally, lets also set a message and message-type session variable so we can provide feedback to the user
       $_SESSION["message_type"] = "alert-success";
-      $_SESSION["message"] = "You are now successfully logged in. Please enjoy your loyalty discounts!";
+      $_SESSION["messages"] = array("You are now successfully logged in. Please enjoy your loyalty discounts!");
       // Once they are logged in we should send them back to whatever page they came from to ensure a smooth experience
       header('Location: '. $_SERVER['HTTP_REFERER']);
       die();
@@ -38,7 +38,7 @@
   // At this point we have checked the login details provided against all enteries in the customer file and found
   // no matches so we can assume that the login details the user submitted were incorrect.
   $_SESSION["message_type"] = "alert-danger";
-  $_SESSION["message"] = "Unfortunately, the login details you provided do not match any accounts. Please try again.";
+  $_SESSION["messages"] = array("Unfortunately, the login details you provided do not match any accounts. Please try again.");
   header('Location: '. $_SERVER['HTTP_REFERER']);
 
   // Take the password hash we already have and see if it is a match for the password entered

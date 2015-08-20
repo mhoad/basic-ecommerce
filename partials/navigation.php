@@ -33,12 +33,16 @@
 </header>
 
 <!-- If we have any messages to display to the user then show them here -->
-<?php if (isset($_SESSION["message"]) && isset($_SESSION["message_type"])): ?>
+<?php if (isset($_SESSION["messages"]) && isset($_SESSION["message_type"])): ?>
   <div class="alert <?php echo $_SESSION["message_type"] ?>" role="alert">
   <?php 
-    echo $_SESSION["message"];
+    echo "<ul>";
+    foreach ($_SESSION["messages"] as $message) {
+      echo "<li>" . $message . "</li>";
+    }
+    echo "</ul>";
     // Clear the message variable to ensure we don't keep displaying the same message
-    $_SESSION["message"] = NULL;
+    $_SESSION["messages"] = NULL;
    ?>
   </div>
 <?php endif ?>
