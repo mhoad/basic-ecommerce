@@ -41,7 +41,9 @@
   function validate_phone_number($phone_number)
   {
     global $errors;
-    # TODO: FIGURE OUT REGEX FOR THIS AND THROW AN ERROR IF INCORRECT...
+    if (!preg_match("/^[(+]?[)\d ]+$/", $phone_number)) {
+      array_push($errors, "Please ensure you enter a valid phone number");
+    }
   }
 
   function validate_credit_card_expiry($month, $year)
@@ -58,6 +60,16 @@
     if ($customer_card_expiry_date < $maximum_expiry_date) {
        array_push($errors, "Please ensure you enter a non-expired credit card");
      } 
+  }
+
+  function clean_address_input($customer_address)
+  {
+    // It is likely that customers will do all kinds of funky stuff when inputting 
+    // their mailing address such as newline characters and commas (which will 
+    // mess up our CSV files) so we should address both of these problems here.
+    $customer_address = str_replace("\n", '', $customer_address);
+    $customer_address = str_replace(',', '', $customer_address);
+    return $customer_address;
   }
 
 ?>

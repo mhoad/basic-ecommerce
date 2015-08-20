@@ -34,7 +34,7 @@
               <div class="input-group">
                 <p>
                   <label for="customer_address">Mailing Address</label><br>
-                  <textarea required id="customer_address" rows="4"></textarea>
+                  <textarea required id="customer_address" rows="4" name="customer_address"></textarea>
                 </p>
               </div>
               <div class="input-group input-group-lg">
@@ -44,7 +44,7 @@
                 </p>
                 <p>
                   <label for="customer_phone_number">Mobile Phone Number</label><br>
-                  <input type="text" class="form-control" required <?php (isset($_SESSION["phone_number"]) ? print 'value="' . $_SESSION["phone_number"] . '"' : print 'placeholder="+61 410 825 666"'); ?> name="phone_number" id="customer_phone_number">
+                  <input type="text" class="form-control" required <?php (isset($_SESSION["phone_number"]) ? print 'value="' . $_SESSION["phone_number"] . '"' : print 'placeholder="+61 410 825 666"'); ?> name="phone_number" id="customer_phone_number" pattern="^[(+]?[)\d ]+$">
                 </p>
               </div>
               <div class="input-group input-group-lg">
@@ -58,7 +58,7 @@
               <div class="input-group input-group-lg">
                 <p>
                   <label for="customer_credit_card">Credit Card</label><br>
-                  <input type="text" id="customer_credit_card" placeholder="1234 4568 91012" required maxlength="18" name="credit_card_number" />
+                  <input type="text" id="customer_credit_card" placeholder="1234 4568 91012" pattern="[0-9| ]{13,18}" name="credit_card_number" />
                 </p>
                 <p>
                   <label>Credit Card Expiry Date</label><br>
@@ -91,7 +91,7 @@
               <div class="input-group input-group-lg">
                 <p>
                   <label>Newsletter</label><br>
-                  <input type="checkbox" name="vehicle" value="Bike">Yes, Please Subscribe Me
+                  <input type="checkbox" name="newsletter" value="true">Yes, Please Subscribe Me
                 </p>
               </div>
               <button class="btn btn-primary">Purchase</button>
