@@ -19,7 +19,7 @@
 ?>
   <body>
     <script type="text/javascript">
-      function deleteImage()
+      function deleteOrders()
       {
           var r = confirm("Are you sure you want to delete all orders? Subtle Hint about the 'Usability is enhanced with creative programming or scripting' bonus mark. Oh and it also uses AJAX :-\)");
           if(r == true)
@@ -76,18 +76,7 @@
                               echo "</tr>";
                         }
                         fclose($handle);
-                    // $row = 1;
-                    // while (($data = fgetcsv($orders_file, 1000, ",")) !== FALSE) {
-                    //   $num = count($data);
-                    //   $row++;
-                    //   echo "<tr>";
-                    //   for ($c=0; $c < $num; $c++) {
-                    //     echo "<td>" . $data[$c] . "</td>\n";
-                    //   }
-                    //   echo "</tr>";
                     }
-                    //print_r(fgetcsv($orders_file));
-                    // fclose($orders_file);
                   }               
                 ?>
               </tbody>
@@ -97,7 +86,11 @@
         </div>
         <div class="row">
           <div class="col-md-10 col-md-offset-1">
-            <a href="#" id="delete_orders" class="btn btn-danger">Delete All Orders</a>
+            <?php 
+              if ($orders_file !== NULL) {
+                echo "<a href='#'' id='delete_orders' class='btn btn-danger'>Delete All Orders</a>";
+              }
+             ?>
           </div>
         </div>
       </main>
@@ -106,8 +99,7 @@
     <?php require 'partials/javascript.php'; ?>
     <script type="text/javascript">
       $( "#delete_orders" ).click(function() {
-        console.log( "button clicked." );
-        deleteImage();
+        deleteOrders();
       });
     </script>
 

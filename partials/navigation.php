@@ -43,6 +43,7 @@
     echo "</ul>";
     // Clear the message variable to ensure we don't keep displaying the same message
     $_SESSION["messages"] = NULL;
+    $_SESSION["message_type"] = NULL;
    ?>
   </div>
 <?php endif ?>

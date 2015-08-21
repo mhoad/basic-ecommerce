@@ -67,9 +67,9 @@
               <div class="input-group input-group-lg">
                 <p>  
                   <label>Delivery Method</label><br>
-                  <input type="radio" name="animal" value="Regular" checked="" />Regular Post
-                  <input type="radio" name="animal" value="Courier" />Courier
-                  <input type="radio" name="animal" value="Express" />Express Courier
+                  <input type="radio" name="shipping" value="Regular" checked="" />Regular Post
+                  <input type="radio" name="shipping" value="Courier" />Courier
+                  <input type="radio" name="shipping" value="Express" />Express Courier
                 </p>
               </div>
               <div class="input-group input-group-lg">

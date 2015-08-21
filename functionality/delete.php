@@ -1,6 +1,8 @@
 <?php 
   // Delete the orders.txt file if it exists
-  if (file_exists("../orders.txt")) {
-    unlink("../orders.txt");
+  if (unlink("../orders.txt")) {
+    echo "success";
+  } else {
+    echo "error";
   }
 ?>
